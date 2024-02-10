@@ -8,10 +8,15 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=200, null=True)
     email = models.EmailField(unique=True, null=True)
 
-"""class Project(models.Model):
+"""
+
+class Project(models.Model):
     name = models.CharField(max_length=200,null=True)
     description = models.CharField(max_length=200,null=True)
 
 class SubProject(models.Model):
     name = models.CharField(max_length=200,null=True)
-    description = models.CharField(max_length=200,null=True)"""
+    description = models.CharField(max_length=200,null=True)
+    
+    
+"""
