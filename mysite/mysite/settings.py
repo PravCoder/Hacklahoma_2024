@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',   # adding base-app
 ]
 
-# AUTH_USER_MODEL = "base.Player"   # defining the custom-user-model app.ModelName
+AUTH_USER_MODEL = "base.User"   # defining the custom-user-model app.ModelName
 
 
 MIDDLEWARE = [
@@ -55,6 +55,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
 
 
 TEMPLATES = [
