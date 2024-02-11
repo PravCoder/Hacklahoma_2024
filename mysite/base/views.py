@@ -99,3 +99,27 @@ def create_small_project(request, pk):
 
     context = {"large_project":large_project}
     return render(request, "base/create_small_project.html", context)
+
+def view_documents(request, pk):
+    small_project = SubProject.objects.get(pk=int(pk))
+    small_project.save()
+    if request.method == "POST":
+        document_name = request.POST.get("document_name")
+        due_date = request.POST.get("due_date")
+        doc_type = request.POST.get("type")
+        document_number = request.POST.get("document_number")
+        prompt = request.POST.get("prompt")
+        doc = None
+        if doc_type == "document":
+            doc = Document(name=document_name,due_date=due_date, prompt=prompt, doc_type=doc_type, number=document_number)
+            doc.save()
+            small_project.documents.add(doc)
+            doc.save()
+            small_project.save()
+        if doc_type == "ideation":
+            pass
+
+        
+
+    context = {"small_project":small_project, "documents":small_project.documents.all()}
+    return render(request, "base/view_documents.html", context)

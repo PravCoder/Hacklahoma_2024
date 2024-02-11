@@ -27,5 +27,15 @@ class LargeProject(models.Model):
 class SubProject(models.Model):
     name = models.CharField(max_length=200,null=True)
     description = models.CharField(max_length=200,null=True)
-    
-    
+    documents = models.ManyToManyField("Document", related_name="documents", blank=True)
+    # ideations = 
+
+class Document(models.Model):
+    name = models.CharField(max_length=200,null=True)
+    number = models.CharField(max_length=200,null=True)
+    due_date = models.CharField(max_length=200,null=True)
+    doc_type = models.CharField(max_length=200,null=True)  # essay or ideation
+    prompt = models.CharField(max_length=500,null=True)
+    content = models.CharField(max_length=500,null=True)
+
+
