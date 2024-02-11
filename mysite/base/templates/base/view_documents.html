@@ -78,12 +78,13 @@
 
   {% for document in documents %}
     <!-- Document Box -->
-    <div class="document-box">
-      <h3>{{ document.name }}</h3>
-      <p>Date Due: {{ document.due_date }}</p>
-      <p>Document Number: {{ document.document_number }}</p>
-      <p>Type: {{ document.doc_type }}</p>
-    </div>
+      <div class="document-box">
+        <a href="{% url 'document' document.id%}"><h3>{{ document.name }}</h3></a>
+        <p>Date Due: {{ document.due_date }}</p>
+        <p>Document Number: {{ document.number }}</p>
+        <p>Type: {{ document.doc_type }}</p>
+      </div>
+    
   {% endfor %}
 
   <!-- Document Form Card -->

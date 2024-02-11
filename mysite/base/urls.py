@@ -12,6 +12,7 @@ urlpatterns = [
     path("create-small-project/<str:pk>/", views.create_small_project, name="create-small-project"),
 
     path("view-documents/<str:pk>/", views.view_documents, name="view-documents"),
+    path("document/<str:pk>/", views.document, name="document"),
 
     #  path("view-small-project/<str:pk1>/<str:pk2>/", views.view_dashboard, name="view-dashboard"),
 

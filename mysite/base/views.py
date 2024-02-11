@@ -123,3 +123,12 @@ def view_documents(request, pk):
 
     context = {"small_project":small_project, "documents":small_project.documents.all()}
     return render(request, "base/view_documents.html", context)
+
+def document(request, pk):
+    doc = Document.objects.get(id=int(pk))
+    if request.method == "POST":
+        updated_text = request.POST.get("update")
+        doc.content = updated_text
+        doc.save()
+    context = {"document":doc}
+    return render(request, "base/document.html", context)
