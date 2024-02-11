@@ -14,6 +14,8 @@ urlpatterns = [
     path("view-documents/<str:pk>/", views.view_documents, name="view-documents"),
     path("document/<str:pk>/", views.document, name="document"),
 
+    path("view-ideation/<str:pk>/", views.view_ideation, name="view-ideation"),
+
     #  path("view-small-project/<str:pk1>/<str:pk2>/", views.view_dashboard, name="view-dashboard"),
 
 

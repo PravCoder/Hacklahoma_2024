@@ -90,7 +90,7 @@
   {% for ideation in ideations %}
     <!-- Document Box -->
       <div class="document-box">
-        <a href=""><h3>{{ ideation.name }}</h3></a>
+        <a href="{% url 'view-ideation' ideation.id%}"><h3>{{ ideation.name }}</h3></a>
         <p>Type: {{ document.doc_type }}</p>
       </div>
     

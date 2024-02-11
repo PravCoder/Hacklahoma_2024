@@ -95,6 +95,7 @@ def create_small_project(request, pk):
 
         large_project.save()
         Sproject.save()
+        return redirect("view-project", large_project.id)
         
 
     context = {"large_project":large_project}
@@ -134,6 +135,9 @@ def document(request, pk):
         updated_text = request.POST.get("update")
         doc.content = updated_text
         doc.save()
+        for sp in SubProject.objects.all():
+            if doc in list(sp.documents.all()):
+                return redirect("view-documents", sp.id)
     context = {"document":doc}
     return render(request, "base/document.html", context)
 
