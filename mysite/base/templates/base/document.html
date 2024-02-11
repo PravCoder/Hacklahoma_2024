@@ -94,7 +94,7 @@
         <p>Prompt: {{document.prompt}}</p>
         <form method="POST" action="">
             {% csrf_token %}
-            <textarea contenteditable="true" id="update" name="update">This is what you have so far: {{document.content}}</textarea>
+            <textarea contenteditable="true" id="update" name="update">{{document.content}}</textarea>
             <!-- More content -->
 
             <!-- Save button -->
