@@ -42,6 +42,7 @@ class Document(models.Model):
 class Ideation(models.Model):  
     name = models.CharField(max_length=200,null=True)
     nodesAndLinks = models.JSONField(default=dict) 
+    prompt = models.CharField(max_length=500,null=True)
 
 
 class ToDoItem(models.Model):
