@@ -28,7 +28,8 @@ class SubProject(models.Model):
     name = models.CharField(max_length=200,null=True)
     description = models.CharField(max_length=200,null=True)
     documents = models.ManyToManyField("Document", related_name="documents", blank=True)
-    # ideations = 
+    ideations = models.ManyToManyField("Ideation", related_name="ideation", blank=True)
+    
 
 class Document(models.Model):
     name = models.CharField(max_length=200,null=True)

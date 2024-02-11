@@ -117,11 +117,15 @@ def view_documents(request, pk):
             doc.save()
             small_project.save()
         if doc_type == "ideation":
-            pass
+            ideation = Ideation(name=document_name)
+            ideation.save()
+            small_project.ideations.add(ideation)
+            ideation.save()
+            small_project.save()
 
-        
 
-    context = {"small_project":small_project, "documents":small_project.documents.all()}
+    
+    context = {"small_project":small_project, "documents":small_project.documents.all(), "ideations":small_project.ideations.all()}
     return render(request, "base/view_documents.html", context)
 
 def document(request, pk):
@@ -132,3 +136,9 @@ def document(request, pk):
         doc.save()
     context = {"document":doc}
     return render(request, "base/document.html", context)
+
+def view_ideation(request, pk):
+    ideation = Ideation.objects.get(id=int(pk))
+
+    context = {"ideation":ideation}
+    return render(request, "base/GoJSInput.html", context)

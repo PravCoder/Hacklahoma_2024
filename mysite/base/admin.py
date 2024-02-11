@@ -8,3 +8,5 @@ admin.site.register(User)
 admin.site.register(LargeProject)
 admin.site.register(SubProject)
 admin.site.register(Document)
+
+admin.site.register(Ideation)

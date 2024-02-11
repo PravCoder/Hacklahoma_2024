@@ -87,6 +87,15 @@
     
   {% endfor %}
 
+  {% for ideation in ideations %}
+    <!-- Document Box -->
+      <div class="document-box">
+        <a href=""><h3>{{ ideation.name }}</h3></a>
+        <p>Type: {{ document.doc_type }}</p>
+      </div>
+    
+  {% endfor %}
+
   <!-- Document Form Card -->
   <div class="document-form-card">
     <h3>Create New Document</h3>
