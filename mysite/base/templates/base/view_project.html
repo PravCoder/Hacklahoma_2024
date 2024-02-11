@@ -3,7 +3,9 @@
 {% block content %}
 
 <style>
-
+body {
+    text-align: center;
+}
 
 .dashboard-container {
     display: flex;
@@ -47,15 +49,17 @@ h3 {
     margin-top: 20px;
     display: inline-block;
     transition: background-color 0.3s;
-    text-align: center; /* Center the button */
 }
 
 .new-project-button:hover {
     background-color: #0056b3;
 }
 
+h1 {
+    color: white;
+    margin-top: 20px; /* Adjust margin-top as needed */
+}
 </style>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +70,7 @@ h3 {
     <title>Dashboard</title>
 </head>
 <body>
-
+    <h1>Large Project: {{project.name}}</h1>
     <div class="dashboard-container">
         {% for project in sub_projects %}
         <!-- Box 1 -->
@@ -74,16 +78,12 @@ h3 {
                 <h3>{{project.name}}</h3>
                 <p class="description">{{project.description}}</p>
             </a>
-
         {% endfor %}
-        
-
         <!-- Add more boxes as needed -->
     </div>
 
     <!-- Create New Project Button -->
     <a href="{% url 'create-small-project' project.id %}" class="new-project-button">Create Small Project</a>
-
 </body>
 </html>
 

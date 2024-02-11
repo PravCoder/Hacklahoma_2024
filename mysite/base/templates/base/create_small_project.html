@@ -11,7 +11,6 @@
         align-items: center;
         justify-content: center;
         height: 100vh;
-        background-color: #f4f4f4;
     }
     
     h1 {
@@ -19,7 +18,6 @@
         top: 0;
         left: 0;
         width: 100%;
-        background-color: #333;
         color: #fff;
         padding: 10px;
         text-align: center;
@@ -73,6 +71,10 @@
         color: #000000;
         margin-bottom: 20px;
     }
+    h1 {
+        color: white;
+        margin-top: 20px; /* Adjust margin-top as needed */
+    }
     </style>
     <head>
         <meta charset="UTF-8">
@@ -82,10 +84,7 @@
     </head>
     <body>
     
-        <!-- <h1>Your Constant H1 Tag</h1> -->
-        <div class="large-project-header">
-            Large Project: {{ project.name }}
-        </div>
+        <h1>Large Project: {{project.name}}</h1>
         
     
         <div class="form-container">
