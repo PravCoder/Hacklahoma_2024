@@ -42,3 +42,8 @@ class Document(models.Model):
 class Ideation(models.Model):  
     name = models.CharField(max_length=200,null=True)
     nodesAndLinks = models.JSONField(default=dict) 
+
+
+class ToDoItem(models.Model):
+    description = models.CharField(max_length=200,null=True)
+    completed = models.BooleanField(null=True, blank=True)

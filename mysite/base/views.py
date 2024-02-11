@@ -60,6 +60,8 @@ def view_project(request, pk):  # displays all small projects
 
 def view_dashboard(request):
     user = request.user
+    if request.method == "POST":
+        pass
     context = {"projects":user.projects.all()}
     return render(request, "base/dashboard.html", context)
 
