@@ -5,11 +5,13 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("view-project/<str:pk>", views.view_project, name="view-project"),
     path("create-large-project/", views.create_large_project, name="create-large-project"),
-    path("create-small-project/", views.create_small_project, name="create-small-project"),
+
+    
     path("view-dashboard/", views.view_dashboard, name="view-dashboard"),
     path("view-small-projects/<str:pk>/", views.view_dashboard, name="view-dashboard"),
+    path("create-small-project/<str:pk>/", views.create_small_project, name="create-small-project"),
 
-    #  path("view-small-projects/<str:pk1>/<str:pk2>/", views.view_dashboard, name="view-dashboard"),
+    #  path("view-small-project/<str:pk1>/<str:pk2>/", views.view_dashboard, name="view-dashboard"),
 
 
 

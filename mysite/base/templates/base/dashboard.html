@@ -70,7 +70,7 @@ h3 {
     <div class="dashboard-container">
         {% for project in projects %}
         <!-- Box 1 -->
-            <a href="#" class="dashboard-box">
+            <a href="{% url 'view-project' project.id %}" class="dashboard-box">
                 <h3>{{project.name}}</h3>
                 <p class="description">{{project.description}}</p>
                 <p class="date">Created: {{project.date_created}}</p>

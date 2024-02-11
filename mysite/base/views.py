@@ -8,7 +8,7 @@ import datetime as dt
 def register(request):
     if request.method == "POST":
         first_name = request.POST.get("first-name")
-        last_name = request.POST.get("first-name")
+        last_name = request.POST.get("last-name")
         email = request.POST.get("email")
         username = request.POST.get("username")
         p1 = request.POST.get("password1")
@@ -49,8 +49,13 @@ def home(request):
     context = {}
     return render(request, "base/home.html", context)
 
-def view_project(request, pk):
-    context = {}
+def view_project(request, pk):  # displays all small projects
+    user = request.user
+    project = LargeProject.objects.get(id=int(pk))
+    large_project = LargeProject.objects.get(id=int(pk))
+    sub_projects = large_project.sub_projects.all()
+
+    context = {"sub_projects":sub_projects, "project":project}
     return render(request, "base/view_project.html", context)
 
 def view_dashboard(request):
@@ -58,10 +63,6 @@ def view_dashboard(request):
     context = {"projects":user.projects.all()}
     return render(request, "base/dashboard.html", context)
 
-def view_small_projects(request, pk):
-    user = request.user
-    large_project = LargeProject.objects.get(id=int(pk))
-    print(large_project.name)
 
 def create_large_project(request):
     user = request.user
@@ -81,6 +82,20 @@ def create_large_project(request):
     context = {}
     return render(request, "base/create_large_project.html" , context)
 
-def create_small_project(request):
-    context = {}
+def create_small_project(request, pk):
+    print(pk)
+    large_project = LargeProject.objects.get(id=int(pk))
+    print(large_project.name)
+    if request.method == "POST":
+        
+        name = request.POST.get("projectName")
+        description = request.POST.get("projectDescription")
+        Sproject = SubProject.objects.create(name=name, description=description)
+        large_project.sub_projects.add(Sproject)
+
+        large_project.save()
+        Sproject.save()
+        
+
+    context = {"large_project":large_project}
     return render(request, "base/create_small_project.html", context)
