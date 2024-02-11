@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
 from .models import *
 from django.contrib.auth import authenticate, login, logout
+import datetime as dt
+
 
 
 def register(request):
@@ -42,6 +44,8 @@ def login_page(request):
     return render(request, "base/login_register.html", context)
 
 def home(request):
+    for p in request.user.projects.all():
+        print(p.name)
     context = {}
     return render(request, "base/home.html", context)
 
@@ -49,7 +53,31 @@ def view_project(request, pk):
     context = {}
     return render(request, "base/view_project.html", context)
 
+def view_dashboard(request):
+    user = request.user
+    context = {"projects":user.projects.all()}
+    return render(request, "base/dashboard.html", context)
+
+def view_small_projects(request, pk):
+    user = request.user
+    large_project = LargeProject.objects.get(id=int(pk))
+    print(large_project.name)
+
 def create_large_project(request):
+    user = request.user
+    if request.method == "POST":
+        name = request.POST.get("projectName")
+        description = request.POST.get("projectDescription")
+        due_date = request.POST.get("dueDate")
+        Lproject = LargeProject.objects.create(name=name, description=description, date_created=str(dt.datetime.now()), due_date=due_date)
+        user.projects.add(Lproject)
+        Lproject.save()
+        user.save()
+
+        context = {"projects":user.projects.all()}
+        return render(request, "base/dashboard.html", context)
+
+    
     context = {}
     return render(request, "base/create_large_project.html" , context)
 
