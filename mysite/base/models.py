@@ -38,4 +38,6 @@ class Document(models.Model):
     prompt = models.CharField(max_length=500,null=True)
     content = models.CharField(max_length=500,null=True)
 
-
+class Ideation(models.Model):  
+    name = models.CharField(max_length=200,null=True)
+    nodesAndLinks = models.JSONField(default=dict) 
